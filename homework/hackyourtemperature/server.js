@@ -13,7 +13,7 @@ app.get("/", function (req, res) {
 
 app.post("/weather", function (req, res) {
   const cityName = req.body.cityName;
-  res.json(cityName);
+  res.json({ cityName });
 });
 
 app.listen(PORT, () => {
