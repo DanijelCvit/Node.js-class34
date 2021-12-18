@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_OPTIONS='--experimental-vm-modules --experimental-specifier-resolution=node' jest",
     "start": "node server.js"
   },
   "keywords": [],
@@ -17,6 +17,9 @@
     "node-fetch": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "babel-jest": "^27.4.5",
     "jest": "^27.4.5",
     "supertest": "^6.1.6"
   }

@@ -4,7 +4,7 @@ import keys from "./sources/keys.js";
 
 export const PORT = process.env.PORT || 3000;
 
-export const app = express();
+const app = express();
 
 // Body parser
 app.use(express.json());
@@ -37,3 +37,5 @@ app.post("/weather", async (req, res) => {
     console.log(error);
   }
 });
+
+export default app;
