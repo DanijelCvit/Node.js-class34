@@ -15,24 +15,25 @@ app.get("/", (req, res) => {
 
 app.post("/weather", async (req, res) => {
   const cityName = req.body.cityName;
-  let json;
 
   try {
-    const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${keys.API_KEY}`
-    );
-    json = await response.json();
-  } catch (error) {
-    return console.log(error);
-  }
+    const response =
+      await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${keys.API_KEY}
+  `);
+    const json = await response.json();
 
-  if (json.cod === 200) {
-    res.json({
-      weatherText: `${cityName} ${(+json.main.temp - 273.15).toFixed(
-        1
-      )}\u00B0C`,
-    });
-  } else {
-    res.status(400).json({ weatherText: "City is not found!" });
+    if (json.cod === 200) {
+      res
+        .json({
+          weatherText: `${cityName} ${(+json.main.temp - 273.15).toFixed(
+            1
+          )}\u00B0C`,
+        })
+        .end();
+    } else {
+      res.status(400).json({ weatherText: "City is not found!" }).end();
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
