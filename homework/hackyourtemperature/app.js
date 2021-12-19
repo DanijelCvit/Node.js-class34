@@ -31,7 +31,7 @@ app.post("/weather", async (req, res) => {
         })
         .end();
     } else {
-      res.status(400).json({ weatherText: "City is not found!" }).end();
+      res.status(400).json({ weatherText: "City is not found!" });
     }
   } catch (error) {
     console.log(error);
